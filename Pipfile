@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+channels = "*"
+channels-redis = "*"
+daphne = "*"
+djangorestframework = "*"
+django-oauth-toolkit = "*"
+"oauth2-provider" = "*"
+filters = "*"
+drf-url-filters = "*"
+pillow = "*"
+django-filter = "*"
+
+[dev-packages]
+django-cors-headers = "*"
+
+[requires]
+python_version = "3.6"

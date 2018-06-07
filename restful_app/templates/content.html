@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block content %}
+<p>This is the home page</p>
+<ul>
+    {% for day in days %}
+    <li> Day {{day}} </li>
+    {% endfor %}
+</ul>
+{% endblock %}
