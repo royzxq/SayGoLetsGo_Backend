@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'restful_app',
     'rest_framework',
-    'corsheaders',
+    # 'corsheaders',
     # 'webpack_loader',
     'oauth2_provider',
     'filters',
