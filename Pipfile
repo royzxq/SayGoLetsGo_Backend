@@ -15,6 +15,7 @@ filters = "*"
 drf-url-filters = "*"
 pillow = "*"
 django-filter = "*"
+gunicorn = "*"
 
 [dev-packages]
 django-cors-headers = "*"
