@@ -22,11 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fei$)^sl9m)g1=3mhs^7809+6d31r0%ins=$humq-99#fh3kol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ['BACKEND_DEBUG']
 
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://sheltered-inlet-14420.herokuapp.com/', '*']
 
 
 # Application definition
@@ -92,11 +92,28 @@ SESSION_COOKIE_HTTPONLY = False
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+if DEBUG:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+else:
+    import dj_database_url
+
+    DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
 
 CHANNEL_LAYERS = {
     'default': {
@@ -175,3 +192,7 @@ STATIC_URL = '/static/'
 #     }
 # }
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())

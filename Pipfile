@@ -16,6 +16,9 @@ drf-url-filters = "*"
 pillow = "*"
 django-filter = "*"
 gunicorn = "*"
+"psycopg2" = "*"
+dj-database-url = "*"
+django-heroku = "*"
 
 [dev-packages]
 django-cors-headers = "*"
