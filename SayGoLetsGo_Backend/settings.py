@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fei$)^sl9m)g1=3mhs^7809+6d31r0%ins=$humq-99#fh3kol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['BACKEND_DEBUG']
+DEBUG = False
 
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
