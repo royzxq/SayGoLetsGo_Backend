@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fei$)^sl9m)g1=3mhs^7809+6d31r0%ins=$humq-99#fh3kol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ['BACKEND_DEBUG']
 
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
@@ -101,14 +101,14 @@ DATABASES = {
 }
 if DEBUG:
     DATABASES = {
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': os.environ['DATABASE_NAME'],
-        #     'USER': os.environ['DATABASE_USER'],
-        #     'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        #     'HOST': 'localhost',
-        #     'PORT': '5432',
-        # }
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
 else:
     import dj_database_url
