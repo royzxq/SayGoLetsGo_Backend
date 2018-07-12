@@ -23,6 +23,7 @@ SECRET_KEY = 'fei$)^sl9m)g1=3mhs^7809+6d31r0%ins=$humq-99#fh3kol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['BACKEND_DEBUG']
+print("Debug setting is ", DEBUG)
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
 ALLOWED_HOSTS = ['https://sheltered-inlet-14420.herokuapp.com/', '*']
