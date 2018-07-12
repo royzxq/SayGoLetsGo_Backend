@@ -23,7 +23,6 @@ SECRET_KEY = 'fei$)^sl9m)g1=3mhs^7809+6d31r0%ins=$humq-99#fh3kol'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['BACKEND_DEBUG']
-
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
 ALLOWED_HOSTS = ['https://sheltered-inlet-14420.herokuapp.com/', '*']
@@ -49,7 +48,11 @@ INSTALLED_APPS = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS.append('corsheaders')
+    try:
+        import corsheaders
+        INSTALLED_APPS.append('corsheaders')
+    except:
+        print("import corsheaders failed")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,8 +123,11 @@ if DEBUG:
         }
     }
 else:
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+    try:
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+    except:
+        print("import dj_database_url failed")
 
 CHANNEL_LAYERS = {
     'default': {
@@ -202,5 +208,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
+    try:
+        import django_heroku
+        django_heroku.settings(locals())
+    except:
+        print("import django_heroku failed")
