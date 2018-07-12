@@ -100,12 +100,21 @@ DATABASES = {
     }
 }
 if DEBUG:
+    DATABASE_NAME = None
+    if "DATABASE_NAME" in os.environ:
+        DATABASE_NAME = os.environ["DATABASE_NAME"]
+    DATABASE_USER = None
+    if "DATABASE_USER" in os.environ:
+        DATABASE_USER = os.environ["DATABASE_USER"]
+    DATABASE_PASSWORD = None
+    if "DATABASE_PASSWORD" in os.environ:
+        DATABASE_PASSWORD = os.environ["DATABASE_PASSWORD"]
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['DATABASE_NAME'],
-            'USER': os.environ['DATABASE_USER'],
-            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'NAME': DATABASE_NAME,
+            'USER': DATABASE_USER,
+            'PASSWORD': DATABASE_PASSWORD,
             'HOST': 'localhost',
             'PORT': '5432',
         }
